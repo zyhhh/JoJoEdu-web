@@ -64,6 +64,27 @@ export const constantRouterMap = [
       }
     ]
   },
+  {
+    path: '/subject',
+    component: Layout,
+    redirect: '/subject/list',
+    name: '课程分类管理',
+    meta: { title: '课程分类管理', icon: 'nested' },
+    children: [
+      {
+        path: 'list',
+        name: '课程分类列表',
+        component: () => import('@/views/jojoedu/subject/list'),
+        meta: { title: '课程分类列表', icon: 'tree'}
+      },
+      {
+        path: 'save',
+        name: '课程分类列表',
+        component: () => import('@/views/jojoedu/subject/import'),
+        meta: { title: '导入课程分类', icon: 'import'}
+      }
+    ]
+  },
   /*
   * 以下是示例路由模板
   */
