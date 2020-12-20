@@ -5,7 +5,7 @@
         <!-- <el-tag type="warning">excel模版说明：仅最多支持二级课程分类；若有二级分类一级分类名称为必填;若只有一级分类，二级分类可留空;不要输入非法字符！</el-tag> -->
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <span>excel模版说明：</span>
+            <span><strong>模版说明：</strong></span>
           </div>
           <div class="text">
             1.仅最多支持二级课程分类<br>
@@ -41,10 +41,10 @@
           <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
           <el-button
             :loading="loading"
-            style="margin-left: 10px;"
+            style="margin-left: 20px;"
             size="small"
             type="success"
-            @click="submitUpload">上传到服务器</el-button>
+            @click="submitUpload">导入课程分类</el-button>
             <div slot="tip" class="el-upload__tip">只能上传excel文件，且不超过500KB</div>
         </el-upload>
       </el-form-item>
@@ -66,26 +66,28 @@ export default {
       
     },
     methods: {
-        //上传文件到服务器
+        //这里就相当于表单提交按钮，执行action方法
         submitUpload(){
             this.loading = true
             this.importBtnDisabled = true
             this.$refs.upload.submit()
         },
-        //文件上传成功，会接收接口返回的数据response
+        //上传成功，会接收接口返回的数据response
         fileUploadSuccess(response){
             this.loading = false
             this.$message({
               type: 'success',
-              message: '文件上传成功!',
+              message: '添加课程分类成功!',
             })
+            //路由跳转
+            this.$router.push({path:'/subject/list'})
         },
-        //文件上传失败
+        //上传失败,会接收接口返回的数据response
         fileUploadError(response){
             this.loading = false
             this.$message({
               type: 'error',
-              message: '文件上传失败!',
+              message: '添加课程分类失败!',
             })
         }
     }
