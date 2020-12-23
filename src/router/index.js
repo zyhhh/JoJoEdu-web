@@ -79,7 +79,7 @@ export const constantRouterMap = [
       },
       {
         path: 'save',
-        name: '课程分类导入',  //跳转路径中展示
+        name: '导入课程分类',  //跳转路径中展示
         component: () => import('@/views/jojoedu/subject/import'),
         meta: { title: '导入课程分类', icon: 'import'} //左侧导航栏展示
       }
